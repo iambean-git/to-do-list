@@ -1,9 +1,15 @@
+'use client'
 import Image from "next/image";
-export default function Checklist({ done, content }: { done: boolean, content: string }) {
+import { patchCompleted } from "../lib/actions";
+export default function Checklist({ id, done, content }: {id:number, done: boolean, content: string }) {
+  const handleClick = async() => {
+      const result = await patchCompleted(id,done);
+  }
   return (
+    
     <div className={`w-full h-[50px] border rounded-[27px] shadow-slate flex items-center px-3
                     ${done ? "bg-violet-100" : "bg-white "}`}>
-      <button>
+      <button onClick={handleClick}>
         {
           done ?
             <Image

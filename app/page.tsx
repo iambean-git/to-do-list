@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <div className="w-full flex flex-col items-center">
       <Header />
-      <main className="w-full bg-red-50 max-w-[1200px] p-6 flex flex-col ">
+      <main className="w-full max-w-[1200px] p-6 flex flex-col ">
         {/* 서치바 영역 */}
         <InputTodo />
         
