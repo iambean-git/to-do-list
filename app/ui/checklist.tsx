@@ -7,14 +7,14 @@ export default function Checklist({ done, content }: { done: boolean, content: s
         {
           done ?
             <Image
-              src="/images/icons/check_completed.svg"  // 기본 이미지 (PC 화면에서 사용)
+              src="/images/icons/check_completed.svg"  
               alt="chekced"
               width={32}  // 이미지 너비
               height={32}  // 이미지 높이
             />
             :
             <Image
-              src="/images/icons/check_default.svg"  // 기본 이미지 (PC 화면에서 사용)
+              src="/images/icons/check_default.svg"  
               alt="unchecked"
               width={32}  // 이미지 너비
               height={32}  // 이미지 높이

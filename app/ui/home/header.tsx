@@ -1,4 +1,3 @@
-
 'use client'
 import Image from "next/image";
 export default function Header() {
@@ -16,6 +15,7 @@ export default function Header() {
                         width={151}  // 이미지 너비
                         height={40}  // 이미지 높이
                         className="hidden md:block"
+                        priority 
                     />
                     <Image
                         src="/images/logo/Small.svg"  // 기본 이미지 (PC 화면에서 사용)
@@ -23,6 +23,7 @@ export default function Header() {
                         width={71}  // 이미지 너비
                         height={40}  // 이미지 높이
                         className="md:hidden"
+                        priority 
                     />
                 </button>
             </div>
