@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 export default function Header() {
     return (
-        <header className="h-[60px] w-full border-b border-b-slate-200 flex justify-center">
+        <header className="h-[60px] w-full border-b border-b-slate-200 flex justify-center bg-white">
             <div className="w-full h-full max-w-[1200px]  flex items-center">
                 <Link href={"/"}>
                     <Image

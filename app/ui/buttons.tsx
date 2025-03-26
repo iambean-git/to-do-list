@@ -21,3 +21,18 @@ export function AddButton(
     )
 }
 
+// todo :: 아이콘 변경
+export function DeleteButton({handleClick} : {handleClick: ()=>void}){
+    return(
+        <button
+            className="w-[168px] h-14 rounded-3xl bg-rose-500 
+                            border-2 border-slate-900 flex justify-center items-center text-white"
+            onClick={handleClick}
+        >
+            <PiPlusBold />
+            <span className="ml-0.5 hidden md:block">
+                삭제하기
+            </span>
+        </button>
+    )
+}
