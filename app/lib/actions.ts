@@ -1,9 +1,8 @@
 'use server'
-import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
 /** to-do-list 불러와서 완료/미완료 분리해서 리턴 */
 export async function fetchTodo() {
-    const url = "https://assignment-todolist-api.vercel.app/api/joeunbean/items?page=1&pageSize=10";
+    const url = `${process.env.SERVER_URL}/items?page=1&pageSize=10`;
     const resp = await fetch(url);
     const data = await resp.json();
     // console.log("✅fetchTodo resp : ", data);
@@ -15,9 +14,17 @@ export async function fetchTodo() {
     return { todoList, completedList };
 }
 
+export async function fethcTodoItem(itemId : string) {
+    const url = `${process.env.SERVER_URL}/items/${itemId}`;
+    const resp = await fetch(url);
+    const data = await resp.json();
+
+    return data;
+}
+
 /** to-do-list 추가하기 (POST) */
 export async function postTodo(name: string) {
-    const url = "https://assignment-todolist-api.vercel.app/api/joeunbean/items";
+    const url =`${process.env.SERVER_URL}/items`;
     const data = { name: name };
 
     try {

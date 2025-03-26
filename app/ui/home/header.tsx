@@ -1,14 +1,11 @@
 'use client'
 import Image from "next/image";
+import Link from "next/link";
 export default function Header() {
-    const handleLogoClick = () => {
-        // 페이지 새로고침
-        window.location.reload();
-    };
     return (
         <header className="h-[60px] w-full border-b border-b-slate-200 flex justify-center">
             <div className="w-full h-full max-w-[1200px]  flex items-center">
-                <button onClick={handleLogoClick}>
+                <Link href={"/"}>
                     <Image
                         src="/images/logo/Large.svg"  // 기본 이미지 (PC 화면에서 사용)
                         alt="Logo"
@@ -25,7 +22,7 @@ export default function Header() {
                         className="md:hidden"
                         priority 
                     />
-                </button>
+                </Link>
             </div>
         </header>
     )
