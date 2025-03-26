@@ -18,6 +18,16 @@ export default function Home() {
     // 페이지 새로고침
     window.location.reload();
   };
+
+  const fetchToDo = async () => {
+    const url = "https://assignment-todolist-api.vercel.app/api/joeunbean/items?page=1&pageSize=10";
+    const resp = await fetch(url);
+    const data = await resp.json();
+    console.log("resp : ", data);
+  }
+
+  fetchToDo();
+
   return (
     <div className="w-full flex flex-col items-center">
       <header className="h-[60px] w-full border-b border-b-slate-200 flex justify-center">
