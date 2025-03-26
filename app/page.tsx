@@ -1,103 +1,58 @@
+'use client'
 import Image from "next/image";
-
+import Checklist from "./ui/checklist";
+import { AddButton } from "./ui/buttons";
+import { useState } from "react";
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [inputValue, setInputValue] = useState('');
+  const [btnDisabled, setBtnDisabled] = useState(true);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+  // 입력 값이 변경될 때마다 버튼 활성화 여부를 업데이트
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setInputValue(value);
+    setBtnDisabled(value.trim() === '');  // 입력 값이 없으면 버튼 비활성화
+  };
+
+  const handleLogoClick = () => {
+    // 페이지 새로고침
+    window.location.reload();
+  };
+  return (
+    <div className="w-full flex flex-col items-center">
+      <header className="h-[60px] w-full border-b border-b-slate-200 flex justify-center">
+        <div className="w-full h-full max-w-[1200px]  flex items-center">
+          <button onClick={handleLogoClick}>
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+              src="/images/logo/Large.svg"  // 기본 이미지 (PC 화면에서 사용)
+              alt="Logo"
+              width={151}  // 이미지 너비
+              height={40}  // 이미지 높이
+              className="hidden md:block"
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            <Image
+              src="/images/logo/Small.svg"  // 기본 이미지 (PC 화면에서 사용)
+              alt="Logo"
+              width={71}  // 이미지 너비
+              height={40}  // 이미지 높이
+              className="md:hidden"
+            />
+          </button>
         </div>
+      </header>
+      <main className="w-full bg-red-50 max-w-[1200px] p-6 flex flex-col ">
+        <div className="w-full gap-x-2 md:gap-x-4  flex">
+          <input
+            className="grow h-14 bg-slate-100 border-2 px-6 text-lg"
+            placeholder="할 일을 입력해주세요"
+            value={inputValue}
+            onChange={handleInputChange}
+          />
+          <AddButton disabled={btnDisabled} />
+        </div>
+        <Checklist done={false} content="비타민 챙겨 먹기" />
+        <Checklist done={true} content="비타민 챙겨 먹기" />
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
     </div>
   );
 }
