@@ -14,7 +14,7 @@ export default function Checklist({ id, done, content }: { id: number, done: boo
                     ${done ? "bg-violet-100" : "bg-white "}`}
     >
       <ChecklistBtn done={done} handleClick={handleClick} />
-      <Link className="grow mx-4"
+      <Link className={`grow mx-4 ${done? "line-through" : ""}`}
         href={`items/${id}`}
       >
         {content}

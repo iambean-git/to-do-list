@@ -63,7 +63,7 @@ export default async function ToDoList() {
                             <Checklist
                                 key={todo.id} id={todo.id}
                                 done={todo.isCompleted}
-                                content={todo.id + todo.name}
+                                content={todo.name}
                             />
                         )
                         :
