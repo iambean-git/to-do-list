@@ -80,11 +80,11 @@ export default function ChecklistDetailPage({ data }: { data: Item }) {
     return (
         <div className="w-full max-w-[996px] flex flex-col gap-y-4 md:gap-y-6 font-bold">
             <ChecklistDetail itemName={name} done={isCompleted} setName={setName} setIsCompleted={setIsCompleted} />
-            <div className="flex flex-col md:flex-row gap-4 md:gap-6">
+            <div className="flex flex-col lg:flex-row gap-4 lg:gap-6">
                 {/* 이미지 */}
                 <div
                     className={clsx(
-                        "h-[310px] w-full md:w-96 rounded-3xl flex justify-end items-end p-4",
+                        "h-[310px] w-full lg:w-96 rounded-3xl flex justify-end items-end p-4",
                         {
                             "bg-slate-50 border-2 border-slate-300 border-dashed": !imgUrl, // imgUrl이 없으면 기본 스타일
                             "bg-cover bg-center" : imgUrl
@@ -115,7 +115,7 @@ export default function ChecklistDetailPage({ data }: { data: Item }) {
             </div>
 
             {/* 버튼 */}
-            <div className="w-full flex justify-center gap-2 sm:gap-x-4 md:justify-end">
+            <div className="w-full flex justify-center gap-2 sm:gap-x-4 lg:justify-end">
                 <Button isDisabled={false} onClickEvent={handleDeleteClick} type="delete" />
                 <Button isDisabled={isModifyDisabled} onClickEvent={handleModifyClick} type="modify" />
             </div>
