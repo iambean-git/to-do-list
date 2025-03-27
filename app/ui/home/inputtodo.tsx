@@ -1,6 +1,6 @@
 'use client'
 import { useState } from "react";
-import { AddButton } from "../buttons";
+import Button from "../buttons";
 import { postTodo } from "@/app/lib/actions";
 export default function InputTodo() {
     const [inputValue, setInputValue] = useState('');
@@ -46,7 +46,7 @@ export default function InputTodo() {
                 onChange={handleInputChange}
                 onKeyDown={handleKeyDown}
             />
-            <AddButton disabled={btnDisabled} handleClick={addTodo} />
+            <Button isDisabled={btnDisabled} onClickEvent={addTodo} type="add" />
         </div>
     )
 }

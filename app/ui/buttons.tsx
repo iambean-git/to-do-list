@@ -49,3 +49,16 @@ export default function Button({ isDisabled, onClickEvent, type }: btnType) {
         </button>
     )
 }
+
+export function ImageBtn({ isNew, onClickEvent }: { isNew: boolean, onClickEvent: () => void }) {
+    return (
+        <button className={clsx("size-16 !rounded-full flex justify-center items-center", {
+            "bg-slate-200": isNew,
+            "bg-slate-900/50 border-2 border-slate-900": !isNew
+        })}
+            onClick={onClickEvent}
+        >
+            <img src={`/images/icons/${isNew ? "plus_image" : "edit"}.svg`} alt="img btn" />
+        </button>
+    )
+}

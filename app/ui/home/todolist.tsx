@@ -6,7 +6,7 @@ export default async function ToDoList() {
 
     const { todoList, completedList }: { todoList: Item[]; completedList: Item[] } = await fetchTodo();
     return (
-        <div className="w-full mt-10 grid grid-rows-2 gap-12 md:grid-cols-2 md:gap-6">
+        <div className="w-full mt-10 grid grid-rows-2 gap-12 lg:grid-cols-2 lg:gap-6">
             <div className="flex flex-col gap-y-4">
                 <Image
                     src="/images/icons/todo.svg"
@@ -21,7 +21,7 @@ export default async function ToDoList() {
                             <Checklist
                                 key={todo.id} id={todo.id}
                                 done={todo.isCompleted}
-                                content={todo.id + todo.name}
+                                content={todo.name}
                             />
                         )
                         :

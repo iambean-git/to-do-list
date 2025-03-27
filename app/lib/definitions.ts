@@ -8,3 +8,4 @@ export interface Item {
 }
 
 export type ItemList = Item[];
+export type ModifyItem = Omit<Item, "id" | "tenantId">;
