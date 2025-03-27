@@ -1,38 +1,51 @@
 import { PiPlusBold } from "react-icons/pi";
+import clsx from "clsx";
 
-export function AddButton(
-    { disabled, handleClick }:
-        {
-            disabled: boolean,
-            handleClick : () => void
-        }) {
-    return (
-        <button
-            className="w-14 md:w-[168px] h-14 rounded-3xl bg-violet-600 disabled:bg-slate-200 
-                            border-2 border-slate-900 flex justify-center items-center text-white disabled:text-slate-900"
-            disabled={disabled}
-            onClick={handleClick}
-        >
-            <PiPlusBold />
-            <span className="ml-0.5 hidden md:block">
-                추가하기
-            </span>
-        </button>
-    )
+interface btnType {
+    isDisabled: boolean,
+    onClickEvent: () => void
+    type: "add" | "delete" | "modify"
 }
 
-// todo :: 아이콘 변경
-export function DeleteButton({handleClick} : {handleClick: ()=>void}){
-    return(
-        <button
-            className="w-[168px] h-14 rounded-3xl bg-rose-500 
-                            border-2 border-slate-900 flex justify-center items-center text-white"
-            onClick={handleClick}
+export default function Button({ isDisabled, onClickEvent, type }: btnType) {
+    const btnStyle = clsx(
+        "h-14 border-2 border-slate-900 flex justify-center items-center rounded-3xl disabled:bg-slate-200 ",
+        {
+            "w-14 md:w-[168px] bg-violet-600 text-white disabled:text-slate-900": type === "add",
+            "w-[168px] bg-rose-500 text-white": type === "delete",
+            "w-[168px] bg-lime-300 text-slate-900": type === "modify",
+        }
+    );
+
+    const titleStyle = clsx(
+        "ml-1.5",
+        {
+            "hidden md:block": type === "add"
+        }
+    )
+
+    return (
+        <button className={btnStyle}
+            onClick={onClickEvent}
+            disabled={isDisabled}
         >
-            <PiPlusBold />
-            <span className="ml-0.5 hidden md:block">
-                삭제하기
-            </span>
+
+            {
+                type === "add" ? <PiPlusBold /> :
+                    <img src={
+                        type === "delete" ? "/images/icons/X.svg" :
+                            type === "modify" ? "/images/icons/check.svg" : ""
+                    }
+                        alt="btn icon"
+                    />
+            }
+
+            <span className={titleStyle}>{
+                type === "add" ? "추가하기" :
+                    type === "delete" ? "삭제하기" :
+                        type === "modify" ? "수정하기" : ""
+            }</span>
+
         </button>
     )
 }
